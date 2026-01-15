@@ -874,8 +874,54 @@ Ralph Wiggum          → Use for COMPLEX debugging/issues
 - **Create if not good enough:** Don't settle for poor-quality skills
 - **Start small:** Create focused, single-purpose skills rather than monolithic ones
 
+## Token Efficiency & Compact Communication
+
+**ALWAYS prioritize token efficiency and compact responses.**
+
+### Core Rules
+
+1. **Be Concise** - Use minimal words to convey information
+2. **No Filler** - Avoid unnecessary phrases like "I think", "Let me", "I'll"
+3. **Tables Over Prose** - Use tables and lists instead of paragraphs when possible
+4. **Code Over Explanation** - Show code directly, explain briefly only if needed
+5. **Batch Updates** - Combine multiple small changes into single operations
+6. **Skip Obvious** - Don't explain what's self-evident from code/context
+
+### Response Format
+
+```
+❌ Bad (verbose):
+"I'll now proceed to update the file. Let me add the new function 
+that will handle the user authentication. This function will take 
+the username and password as parameters and return a boolean value 
+indicating whether the authentication was successful."
+
+✅ Good (compact):
+"Adding auth function:"
+[code block]
+```
+
+### When Explaining
+
+| Instead of | Use |
+|------------|-----|
+| Long paragraphs | Bullet points |
+| Repeated context | Brief reference |
+| Step-by-step narration | Direct action |
+| "I will now..." | Just do it |
+
+### Summaries
+
+- Use tables for structured data
+- Use code blocks for technical content
+- Use bullet lists for multiple items
+- Keep summaries under 10 lines when possible
+
+---
+
 ## Best Practices
 
+- **Token Efficiency:** Always be compact - save tokens wherever possible
 - **Experience-First Development:** Always create user personas before building - let user needs drive features, not ideas
 - **Inspiration-Driven Design:** Always ask for design inspirations before building - match user's vision instead of guessing
 - **HTML-First Frontend:** Always build HTML prototypes before framework implementation - validate the experience before the architecture
