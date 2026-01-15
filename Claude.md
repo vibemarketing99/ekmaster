@@ -265,30 +265,64 @@ Every project should maintain these planning documents in the root directory:
 
 ## Development Workflow
 
+### First Question - Project Type
+
+**ALWAYS ask this before starting ANY project:**
+
+> "Is this project for:
+> 1. **Self testing** - Flexible tech stack
+> 2. **Alex's Project** - Must follow Alex's frontend stack requirements"
+
+#### If Alex's Project → Use This Frontend Stack:
+
+| Category | Technology | Notes |
+|----------|------------|-------|
+| **Package Manager** | pnpm | ⚠️ Do NOT use npm or bun |
+| **Language** | TypeScript (Isomorphic) | |
+| **Framework** | React (SPA) | ⚠️ Do NOT use Next.js |
+| **Rendering** | Client-side rendering | Use dynamic imports for code splitting |
+| **Styling** | Tailwind CSS v4 | |
+| **Client State** | Zustand | |
+| **Server State** | React Query | Data fetching |
+| **Forms** | React Hook Form | |
+| **Validation** | Zod | Schema validation |
+| **Charts** | TradingView Lightweight Charts | |
+
+**Alex's Project Rules:**
+- ❌ NO Next.js - Use React SPA architecture
+- ❌ NO npm or bun - Use pnpm only
+- ✅ Dynamic imports for code splitting and CDN optimization
+- ✅ Isomorphic TypeScript
+- ✅ Client-side rendering
+
+---
+
 ### Before Starting Any Task
 
 **For New Products/Features:**
-1. **For new projects:** Ask which GitHub repository to connect to
-2. **Create 3 user personas** (`user-personas.md`) and map the experience
-3. **Review feature list** through persona lens - identify critical vs unnecessary
-4. **For frontend work:** Ask for design inspirations (optional)
+1. **Ask project type:** Self testing OR Alex's Project (see above)
+2. **For new projects:** Ask which GitHub repository to connect to
+3. **Create 3 user personas** (`user-personas.md`) and map the experience
+4. **Review feature list** through persona lens - identify critical vs unnecessary
+5. **For frontend work:** Ask for design inspirations (optional)
    - "Do you have any design inspiration images to add to the `/inspirations` folder?"
    - Analyze images in `/inspirations` folder for style, colors, typography, layouts
    - Document in `design-inspirations.md`
-5. **Identify API requirements:** Determine which APIs are needed
+6. **Identify API requirements:** Determine which APIs are needed
    - LLM/Chat → Use OpenRouter (see API Providers section)
    - Image/Audio/Video → Use Replicate (see API Providers section)
    - Document in `api-requirements.md` if project needs APIs
-6. **Always invoke planning-with-files skill** to create structured planning documents
-7. **Check if existing skills apply:**
+7. **Always invoke planning-with-files skill** to create structured planning documents
+8. **Check if existing skills apply:**
    - ui-ux-pro-max for frontend/UI work
    - Any custom skills created for specialized tasks
-8. **Consider if a new skill is needed:**
+9. **Consider if a new skill is needed:**
    - Is this a specialized task outside your core expertise?
    - Will this workflow be repeated across projects?
    - If yes, consider creating a custom skill first
-9. Verify you're working in the correct folder (frontend vs backend)
-10. Understand the existing structure before adding new files
+10. **For Alex's Project:** Verify tech stack compliance (pnpm, React SPA, no Next.js)
+11. Verify you're working in the correct folder (frontend vs backend)
+12. Understand the existing structure before adding new files
 
 **For Existing Projects/Tasks:**
 1. Review existing `user-personas.md` - does this task serve a persona need?
@@ -399,9 +433,35 @@ agent-browser find label "Email" fill "test@test.com"
 - Vanilla JavaScript (for interactions)
 
 **Phase 2: Framework (After prototype validation)**
+
+#### Self Testing Projects (Flexible)
 - Framework: (To be filled based on project needs - React, Vue, Next.js, etc.)
 - Styling: (To be filled - Tailwind, styled-components, CSS modules, etc.)
 - State Management: (To be filled - Context, Redux, Zustand, etc.)
+
+#### Alex's Projects (Strict Stack)
+
+| Category | Technology | Notes |
+|----------|------------|-------|
+| Package Manager | **pnpm** | ❌ No npm or bun |
+| Language | **TypeScript** | Isomorphic |
+| Framework | **React** | SPA, client-side rendering |
+| Rendering | **CSR** | ❌ No Next.js, no SSR |
+| Code Splitting | **Dynamic imports** | CDN optimization |
+| Styling | **Tailwind CSS v4** | |
+| Client State | **Zustand** | |
+| Server State | **React Query** | Data fetching |
+| Forms | **React Hook Form** | |
+| Validation | **Zod** | Schema validation |
+| Charts | **TradingView Lightweight Charts** | |
+
+```bash
+# Alex's Project Setup
+pnpm create vite@latest my-app --template react-ts
+cd my-app
+pnpm add zustand @tanstack/react-query react-hook-form zod @hookform/resolvers
+pnpm add -D tailwindcss@next @tailwindcss/vite
+```
 
 ### Backend
 - (To be filled based on project needs)
